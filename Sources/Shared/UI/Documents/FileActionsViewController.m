@@ -49,6 +49,7 @@ static short fileActionMode = 0;//1:copy, 2:move
     
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
+        // Keep contentSizeForViewInPopover warning for now
         self.contentSizeForViewInPopover = CGSizeMake(200, 280);
         self.view.frame = CGRectMake(0, 0, 200, 280);
 		
@@ -72,7 +73,6 @@ static short fileActionMode = 0;//1:copy, 2:move
     }
     return self;
 }
-
 
 - (void)setFileToApplyAction:(File *)fileToApplyAction {
     

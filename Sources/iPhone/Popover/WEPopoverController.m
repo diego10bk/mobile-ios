@@ -131,6 +131,7 @@
 	//contentViewController.view;
 	
 	if (CGSizeEqualToSize(popoverContentSize, CGSizeZero)) {
+        // Keep contentSizeForViewInPopover warning for now
 		popoverContentSize = contentViewController.contentSizeForViewInPopover;
 	}
 	
