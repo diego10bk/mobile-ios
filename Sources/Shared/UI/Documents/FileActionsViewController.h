@@ -79,7 +79,7 @@
 
 
 //Constructor
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
                  file:(File *)file 
                 enableDeleteThisFolder:(BOOL)enableDeleteFolder
                 enableCreateFolder:(BOOL)enableCreateFolder
