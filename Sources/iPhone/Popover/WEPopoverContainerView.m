@@ -38,7 +38,7 @@
 
 @synthesize arrowDirection, contentView;
 
-- (id)initWithSize:(CGSize)theSize 
+- (instancetype)initWithSize:(CGSize)theSize 
 		anchorRect:(CGRect)anchorRect 
 	   displayArea:(CGRect)displayArea
 permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections

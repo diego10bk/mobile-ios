@@ -47,7 +47,7 @@
 @property (nonatomic, retain) id <NSObject> context;
 @property (nonatomic, copy) NSArray *passthroughViews;
 
-- (id)initWithContentViewController:(UIViewController *)theContentViewController;
+- (instancetype)initWithContentViewController:(UIViewController *)theContentViewController;
 
 - (void)dismissPopoverAnimated:(BOOL)animated;
 

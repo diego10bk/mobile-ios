@@ -38,13 +38,13 @@
 @synthesize context;
 @synthesize passthroughViews;
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super init])) {
 	}
 	return self;
 }
 
-- (id)initWithContentViewController:(UIViewController *)viewController {
+- (instancetype)initWithContentViewController:(UIViewController *)viewController {
 	if ((self = [self init])) {
 		self.contentViewController = viewController;
 	}
@@ -222,7 +222,7 @@
 - (UIView *)keyView {
 	UIWindow *w = [[UIApplication sharedApplication] keyWindow];
 	if (w.subviews.count > 0) {
-		return [w.subviews objectAtIndex:0];
+		return (w.subviews)[0];
 	} else {
 		return w;
 	}
@@ -248,7 +248,7 @@
 		if (animated) {
 			
 			self.view.userInteractionEnabled = NO;
-			[UIView beginAnimations:@"FadeOut" context:[NSNumber numberWithBool:userInitiated]];
+			[UIView beginAnimations:@"FadeOut" context:@(userInitiated)];
 			[UIView setAnimationDelegate:self];
 			[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 			
