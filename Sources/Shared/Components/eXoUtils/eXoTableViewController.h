@@ -24,4 +24,7 @@
     UILabel *label;
 }
 
+@property (nonatomic, retain) IBOutlet UINavigationBar* navigation;
+@property (nonatomic, retain) UILabel* label;
+
 @end

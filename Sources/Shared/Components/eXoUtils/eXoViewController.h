@@ -24,12 +24,13 @@
 
 
 @interface eXoViewController : UIViewController {
-    IBOutlet UINavigationBar*           _navigation;
-    UILabel *label;
+    IBOutlet UINavigationBar* _navigation;
 }
 
+@property (nonatomic, retain) IBOutlet UINavigationBar* navigation;
+@property (nonatomic, retain) UILabel* label;
 // ATMHud to manage loading diplay
-@property (nonatomic, readonly) ATMHud *hudLoadWaiting;
+@property (nonatomic, readonly, getter=hudLoadWaiting) ATMHud *hudLoadWaiting;
 
 // The method for updating position for hud loading. Be default, the method does nothing.
 - (void)updateHudPosition;
