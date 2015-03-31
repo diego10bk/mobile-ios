@@ -23,6 +23,7 @@
 @implementation eXoViewController
 
 @synthesize hudLoadWaiting = _hudLoadWaiting;
+@synthesize navigation = _navigation, label;
 
 #pragma mark - View lifecycle
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -31,11 +32,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgGlobal.png"]];
 }
-/*
--(void)setTitle:(NSString *)_titleView {
-    [super setTitle:_titleView];
-    label.text = _titleView;
-}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -45,9 +41,10 @@
 
 
 -(void)dealloc {
-    [_hudLoadWaiting release];
+    self.navigation = nil;
+    self.label = nil;
+    [self.hudLoadWaiting release];
     [super dealloc];
-    //[label release];
 }
 
 - (void)viewDidUnload
@@ -56,16 +53,15 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    [_hudLoadWaiting release];
-    _hudLoadWaiting = nil;
+    [self.hudLoadWaiting release];
     [super didReceiveMemoryWarning];
 }
 
 #pragma mark - hudLoadWaiting
 - (ATMHud *)hudLoadWaiting {
     // lazy loading
-    if (!_hudLoadWaiting) {
-        _hudLoadWaiting = [[ATMHud alloc] initWithDelegate:nil];
+    if (!self.hudLoadWaiting) {
+        _hudLoadWaiting = [[[ATMHud alloc] initWithDelegate:nil] autorelease];
         // disable user interaction during the loading.
         [_hudLoadWaiting setAllowSuperviewInteraction:NO];
     }
@@ -73,7 +69,7 @@
 }
 
 - (void)updateHudPosition {
-    // default implementation
+    // Does nothing
 }
 
 - (ATMHud *)hudLoadWaitingWithPositionUpdated {
