@@ -43,7 +43,8 @@
 -(void)dealloc {
     self.navigation = nil;
     self.label = nil;
-    [self.hudLoadWaiting release];
+    [_hudLoadWaiting release];
+    _hudLoadWaiting = nil;
     [super dealloc];
 }
 
@@ -53,15 +54,16 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    [self.hudLoadWaiting release];
+    [_hudLoadWaiting release];
+    _hudLoadWaiting = nil;
     [super didReceiveMemoryWarning];
 }
 
 #pragma mark - hudLoadWaiting
 - (ATMHud *)hudLoadWaiting {
     // lazy loading
-    if (!self.hudLoadWaiting) {
-        _hudLoadWaiting = [[[ATMHud alloc] initWithDelegate:nil] autorelease];
+    if (!_hudLoadWaiting) {
+        _hudLoadWaiting = [[ATMHud alloc] initWithDelegate:nil];
         // disable user interaction during the loading.
         [_hudLoadWaiting setAllowSuperviewInteraction:NO];
     }
